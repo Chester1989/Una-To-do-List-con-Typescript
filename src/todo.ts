@@ -1,4 +1,6 @@
 import fs from "fs";
+import chalk from "chalk";
+
 
 export interface Task {
   id: number;
@@ -54,13 +56,21 @@ function addTask(title: string): void {
 // 📋 Listar tareas
 function listTasks(): void {
   if (tasks.length === 0) {
-    console.log("No hay tareas registradas.");
+    console.log(chalk.yellow("⚠ No hay tareas registradas."));
     return;
   }
+
   tasks.forEach(task => {
-    console.log(`${task.id}. [${task.completed ? "✔" : " "}] ${task.title}`);
+    const status = task.completed 
+      ? chalk.green("✔ Completada") 
+      : chalk.red("✘ Pendiente");
+
+    console.log(
+      chalk.blue(`${task.id}.`) + " " + chalk.white(task.title) + " - " + status
+    );
   });
 }
+
 
 // ✔ Completar tarea
 function completeTask(id: number): boolean {
