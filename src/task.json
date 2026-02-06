@@ -1,0 +1,19 @@
+[
+   { "id": "task-1",
+    "title": "Comprar leche",
+    "description": "Comprar leche en el supermercado",
+    "completed": false
+},
+{
+    "id": "task-2",
+    "title": "Llamar a mamá",
+    "description": "Llamar a mamá para saber cómo está",
+    "completed": true
+},
+{
+    "id": "task-3",
+    "title": "Hacer ejercicio",
+    "description": "Hacer ejercicio durante 30 minutos",
+    "completed": false
+}
+]
