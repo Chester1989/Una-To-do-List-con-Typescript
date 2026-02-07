@@ -2,6 +2,32 @@ import fs from "fs";
 import chalk from "chalk";
 
 
+// 📤 Exportar tareas a CSV
+function exportToCSV(filename: string = "tasks.csv"): void {
+  const header = "ID,Title,Completed,DueDate,Category\n";
+  const rows = tasks.map(task =>
+    `${task.id},"${task.title}",${task.completed},${task.dueDate ?? ""},${task.category ?? ""}`
+  ).join("\n");
+
+  fs.writeFileSync(filename, header + rows);
+  console.log(chalk.green(`✅ Tareas exportadas a ${filename}`));
+}
+
+// 📤 Exportar tareas a Markdown
+function exportToMarkdown(filename: string = "tasks.md"): void {
+  const rows = tasks.map(task => {
+    const status = task.completed ? "✔" : "✘";
+    const due = task.dueDate ? ` _(Fecha límite: ${task.dueDate})_` : "";
+    const cat = task.category ? ` **[${task.category}]**` : "";
+    return `- ${status} ${task.title}${cat}${due}`;
+  }).join("\n");
+
+  const content = `# Lista de Tareas\n\n${rows}`;
+  fs.writeFileSync(filename, content);
+  console.log(chalk.green(`✅ Tareas exportadas a ${filename}`));
+}
+
+
 export interface Task {
   id: number;
   title: string;
@@ -100,3 +126,5 @@ function deleteTask(id: number): boolean {
 }
 
 export { loadTasks, addTask, listTasks, completeTask, deleteTask };
+export { exportToCSV };
+export { exportToMarkdown };

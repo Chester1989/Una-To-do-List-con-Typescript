@@ -1,5 +1,7 @@
 import readline from "readline";
 import { addTask, listTasks, completeTask, deleteTask } from "./todo.js";
+import chalk from "chalk";
+import { exportToCSV, exportToMarkdown } from "./todo.js";
 
 // Configuración de readline
 const rl = readline.createInterface({
@@ -15,6 +17,9 @@ function showMenu(): void {
   console.log("3. Completar tarea");
   console.log("4. Eliminar tarea");
   console.log("5. Salir\n");
+  console.log(chalk.cyan("6.") + " Exportar a CSV");
+console.log(chalk.cyan("7.") + " Exportar a Markdown");
+
 
   rl.question("Elige una opción: ", (option) => {
     handleOption(option);
@@ -57,6 +62,17 @@ function handleOption(option: string): void {
       console.log("👋 Saliendo...");
       rl.close();
       break;
+
+      case "6":
+  exportToCSV();
+  showMenu();
+  break;
+
+case "7":
+  exportToMarkdown();
+  showMenu();
+  break;
+
 
     default:
       console.log("❌ Opción inválida.");

@@ -10,5 +10,12 @@
     "completed": false,
     "dueDate": "2026-02-10",
     "category": "Personal"
+  },
+  {
+    "id": 3,
+    "title": "Ir a correr",
+    "completed": false,
+    "dueDate": "2026-02-09",
+    "category": "Personal"
   }
 ]
