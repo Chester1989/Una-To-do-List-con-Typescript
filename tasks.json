@@ -3,5 +3,12 @@
     "id": 1,
     "title": "Aprender TypeScript",
     "completed": true
+  },
+  {
+    "id": 2,
+    "title": "Comprar pan",
+    "completed": false,
+    "dueDate": "2026-02-10",
+    "category": "Personal"
   }
 ]

@@ -6,6 +6,8 @@ export interface Task {
   id: number;
   title: string;
   completed: boolean;
+  dueDate?: string;     // fecha límite opcional (ISO string)
+  category?: string;    // categoría opcional (ej: "Trabajo", "Personal")
 }
 
 let tasks: Task[] = [];
@@ -43,15 +45,18 @@ function saveTasks(): void {
 }
 
 // ➕ Agregar tarea
-function addTask(title: string): void {
+function addTask(title: string, dueDate?: string, category?: string): void {
   const newTask: Task = {
     id: tasks.length > 0 ? (tasks[tasks.length - 1]?.id ?? 0) + 1 : 1,
     title,
-    completed: false
+    completed: false,
+    dueDate,
+    category
   };
   tasks.push(newTask);
   saveTasks();
 }
+
 
 // 📋 Listar tareas
 function listTasks(): void {
